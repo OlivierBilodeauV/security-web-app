@@ -4,12 +4,17 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "firebase": "9.16.0",
+    "vue": "^3.2.13",
+    "vue-cookies": "^1.8.2",
+    "vue-navigation-bar": "^5.0.2",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -32,7 +37,9 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "vue/multi-word-component-names": "off"
+    }
   },
   "browserslist": [
     "> 1%",

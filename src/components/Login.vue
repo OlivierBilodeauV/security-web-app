@@ -16,7 +16,7 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, signInWithEmailAndPassword} from "firebase/auth"
-
+import Cookies from 'js-cookie'
 export default {
   name: "RegisterComponent",
  setup() {
@@ -29,6 +29,7 @@ export default {
         signInWithEmailAndPassword(getAuth(), email.value, password.value)
         .then(() => {
           console.log("Login successful");
+          Cookies.set('Username', getAuth().currentUser.displayName, { expires: 7 });
           router.push('/profile');
         })
         .catch((error) => {

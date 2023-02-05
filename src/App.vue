@@ -34,6 +34,7 @@
 import "./styles/global_styles.css"
 import { getAuth, onAuthStateChanged, signOut } from "@firebase/auth";
 import router from "./router";
+import Cookies from 'js-cookie'
 
 
 let auth;
@@ -48,7 +49,6 @@ let auth;
       onAuthStateChanged(auth, (user) => {
         if(user) {
           this.isLoggedIn = true;
-          this.userName = this.$cookie.get("Name");
         } else {
           this.isLoggedIn = false;
         }
@@ -60,12 +60,12 @@ let auth;
       return {
         userTheme: "light-theme",
         isLoggedIn: false,
-        userName: ""
       };
     },
     methods: {
       signOutTrigger() {
         signOut(auth).then(()=>{
+          Cookies.remove("Username")
           router.push("/");
         });
       },

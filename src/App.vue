@@ -2,7 +2,7 @@
   <div>
     <ul>
       <li><a href="#/">Home</a></li>
-      <li v-if="this.isLoggedIn"><a href="#profile">Profile</a></li>
+      <li v-if="this.isLoggedIn"><a href="#list">List</a></li>
       <li ><a href="#about">About</a></li>
       <div class="row_end">
         <li v-if="!this.isLoggedIn"><a href="#register">Sign Up</a></li>

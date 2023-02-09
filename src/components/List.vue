@@ -6,10 +6,10 @@
           <div class="basic_text" style="font-size: medium; padding-top: 10px;">Here is your to-do list</div>
           <form>
             <div class="column" style="padding-top: 20px;">
-              <label class="basic_text" >Name of item</label>
-              <input v-model="item"/>
-              <p><button @click="addToList">Add to list</button></p>
-              <p><button @click="deleteList">Delete List</button></p>
+              <label class="basic_text">Name of item</label>
+              <input v-model="item" required/>
+              <p><button type="submit" @click="addToList">Add to list</button></p>
+              <p><button type="button" @click="deleteList">Delete List</button></p>
             </div>
           </form>
         </div>

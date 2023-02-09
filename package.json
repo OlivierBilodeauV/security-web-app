@@ -15,7 +15,6 @@
     "js-cookie": "^3.0.1",
     "vue": "^3.2.13",
     "vue-firebase": "^1.0.8",
-    "vue-navigation-bar": "^5.0.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {

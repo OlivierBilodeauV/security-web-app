@@ -3,7 +3,7 @@ import Home from "../components/Home.vue"
 import About from "../components/About.vue"
 import Login from "../components/Login.vue"
 import Register from "../components/Register.vue"
-import Profile from "../components/Profile.vue"
+import List from "../components/List.vue"
 import {getAuth, onAuthStateChanged} from "firebase/auth"
 
 const routes = [
@@ -11,7 +11,7 @@ const routes = [
     { path: '/about', component: About },
     { path: '/login', component: Login},
     { path: '/register', component: Register},
-    { path: '/profile', component: Profile, meta:{
+    { path: '/list', component: List, meta:{
       requiresAuth: true,
     }}
   ]

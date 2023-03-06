@@ -6,6 +6,9 @@
       <div class="basic_text">Password :</div>
       <p><input type="password" placeholder="Password" v-model="password" /></p>
       <p><button @click="Login">Login</button></p>
+      <div id="error" class="basic_text"></div>
+      <label class="honeypot" for="name"></label>
+      <input class="honeypot" autocomplete="off" type="text" id="name" name="name" placeholder="Your name here" v-model="honeypot">
     </div>
   </div>
 </template>
@@ -16,6 +19,7 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { getAuth, signInWithEmailAndPassword, browserSessionPersistence, setPersistence } from "firebase/auth"
 import Cookies from 'js-cookie'
+
 export default {
   name: "RegisterComponent",
  setup() {
@@ -23,8 +27,11 @@ export default {
     const password = ref('')
     const error = ""
     const router = useRouter()
+    const honeypot = ref('')
     const Login = async () => {
-      setPersistence(getAuth(), browserSessionPersistence)
+      if(honeypot.value == '')
+      {
+        setPersistence(getAuth(), browserSessionPersistence)
       .then(() => {
         return signInWithEmailAndPassword(getAuth(), email.value, password.value)
         .then(() => {
@@ -35,24 +42,30 @@ export default {
       })
         .catch((error) => {
           switch (error.code) {
-            case "auth/invalid-email":
-              alert("Invalid email or password");
-              break;
-            case "auth/user-not-found":
-              alert("Invalid email or password");
-              break;
-            case "auth/wrong-password":
-              alert("Invalid email or password");
-              break;
             default:
-              alert("Invalid email or password");
+              document.getElementById('error').innerHTML = "*Invalid email or password"
               break;
-
           }
-        })  
+        })}
+        else{
+          alert("Bot detected");
+        }
     }
 
     return { Login, name,email, password, error }
   }
+  
 };
 </script>
+
+<style>
+    .honeypot{
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 0;
+        z-index: -1;
+    }
+</style>

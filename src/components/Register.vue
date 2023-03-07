@@ -65,7 +65,7 @@
           })
         }
     }
-      return { Register, name, email, password, error }
+      return { Register, name, email, password, errory }
     }
   };
 </script>
